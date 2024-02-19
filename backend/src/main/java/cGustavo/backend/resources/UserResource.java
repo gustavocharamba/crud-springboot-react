@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
 
     @Autowired
     private UserService userService;
+
 
     @GetMapping
     public ResponseEntity<List<User>> findAll(){
