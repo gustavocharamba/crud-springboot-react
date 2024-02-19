@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
-
 import axios from "axios"
+
+import { Container } from './style'
 
 const Home = () => {
 
@@ -9,8 +10,8 @@ const Home = () => {
     const getUsers = async () => {
         try{
             const response = await axios.get("http://localhost:8080/users")
-
-            console.log(response.data)
+            
+            setUsers(response.data)
        } catch (error){
         console.log(error)
        }
@@ -18,12 +19,13 @@ const Home = () => {
 
     useEffect(() => {
         getUsers()
+        console.log(users)
     }, [])
 
     return(
-        <div>
-            Home
-        </div>
+        <Container>
+            
+        </Container>
     )
 }
 
