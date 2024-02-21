@@ -14,7 +14,7 @@ export const ContentBox = styled.div`
     flex-direction: column;
     height: 100%;
     width: 600px;
-    background-color: ${colors.cadet_gray};
+    background-color: ${colors.gray};
 `
 
 export const SearchBox = styled.div`
@@ -44,7 +44,7 @@ export const UsersBox = styled.div`
         border-radius: 24px;
         height: 100px;
         width: 80%;
-        background-color: ${colors.gray};
+        background-color: ${colors.cadet_gray};
         display: flex;
         justify-content: center;
         align-items: center;
