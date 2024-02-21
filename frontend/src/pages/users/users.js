@@ -17,8 +17,16 @@ const Users = () => {
             
             setUsers(response.data)
        } catch (error){
-        console.log(error)
+            console.log(error)
        }
+    }
+
+    const deleteUser = async (id) =>{
+        try{
+            await axios.delete(`http://localhost:8080/users/${id}`)
+        } catch (error){
+            console.log(error)
+        }
     }
 
     useEffect(() => {
@@ -30,6 +38,11 @@ const Users = () => {
         event.preventDefault()
 
         navigate("/create")
+    }
+
+    function handdleDelete(id){
+        deleteUser(id)
+        console.log(users)
     }
 
     return(
@@ -66,7 +79,7 @@ const Users = () => {
                                     <button><MdEdit style={icons}/></button>
                                 </div>
                                 <div>
-                                    <button><MdDelete style={icons}/></button>
+                                    <button onClick={handdleDelete(1)}><MdDelete style={icons}/></button>
                                 </div>
                             </div>
                         </div>
