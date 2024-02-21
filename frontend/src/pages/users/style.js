@@ -33,7 +33,7 @@ export const SearchBox = styled.div`
 `
 
 export const UsersBox = styled.div`
-    height: 90%;
+    height: 80%;
     overflow: auto;
     display: flex;
     align-items: center;
@@ -115,6 +115,21 @@ export const UsersBox = styled.div`
             }
         }
 
+
+    }
+`
+
+export const CreateUserBox = styled.div`
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .create_button {
+        width: 80px;
+        height: 45px;
+        font-size: 16px;
+        font-weight: bold;
 
     }
 `
