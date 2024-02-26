@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate  } from "react-router-dom"
-import axios from "axios"
+import { getUsers, deleteUser } from '../../services/userService';
 
 import { Container, ContentBox, SearchBox, UsersBox, icons, CreateUserBox } from './style'
 import { MdEdit, MdDelete   } from "react-icons/md";
@@ -9,30 +9,20 @@ const Users = () => {
 
     const navigate = useNavigate()
 
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState([]) 
+    
+    useEffect(() => {
+        fetchData()
+    }, [])
 
-    const getUsers = async () => {
+    async function fetchData(){
         try{
-            const response = await axios.get("http://localhost:8080/users")
-            
-            setUsers(response.data)
-       } catch (error){
-            console.log(error)
-       }
-    }
-
-    const deleteUser = async (id) =>{
-        try{
-            await axios.delete(`http://localhost:8080/users/${id}`)
+            const response = await getUsers()
+            setUsers(response)
         } catch (error){
             console.log(error)
         }
     }
-
-    useEffect(() => {
-        getUsers()
-        console.log(users)
-    }, [])
 
     function handdleCreate(event){
         event.preventDefault()
@@ -42,7 +32,10 @@ const Users = () => {
 
     function handdleDelete(id){
         deleteUser(id)
-        console.log(users)
+    }
+
+    function handdleEdit(id){
+
     }
 
     return(
