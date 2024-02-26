@@ -26,7 +26,7 @@ export const deleteUser = async (id) => {
     }
 }
 
-export const editUser = async (id) => {
+export const updateUser = async (id) => {
     try{
         await axios.put(`http://localhost:8080/users/${id}`)
     } catch (error) {

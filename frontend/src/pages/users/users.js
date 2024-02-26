@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate  } from "react-router-dom"
-import { getUsers, deleteUser } from '../../services/userService';
+import { getUsers, deleteUser, updateUser, createUser } from '../../services/userService';
 
 import { Container, ContentBox, SearchBox, UsersBox, icons, CreateUserBox } from './style'
 import { MdEdit, MdDelete   } from "react-icons/md";
@@ -10,7 +10,7 @@ const Users = () => {
     const navigate = useNavigate()
 
     const [users, setUsers] = useState([]) 
-    
+
     useEffect(() => {
         fetchData()
     }, [])
@@ -24,18 +24,17 @@ const Users = () => {
         }
     }
 
-    function handdleCreate(event){
-        event.preventDefault()
+    function handdleCreate(){
 
         navigate("/create")
     }
 
-    function handdleDelete(id){
-        deleteUser(id)
+    async function handdleDelete(id) {
+        await deleteUser(id)
     }
 
-    function handdleEdit(id){
-
+    async function handdleEdit(obj){
+        await updateUser(obj)
     }
 
     return(
@@ -73,7 +72,7 @@ const Users = () => {
                                         <button><MdEdit style={icons}/></button>
                                     </div>
                                     <div>
-                                        <button onClick={handdleDelete(1)}><MdDelete style={icons}/></button>
+                                        <button onClick={(event) => handdleDelete(user.id)}><MdDelete style={icons}/></button>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +81,7 @@ const Users = () => {
 
                 </UsersBox>
                 <CreateUserBox>
-                    <button className='create_button' onClick={handdleCreate}>Create</button>
+                    <button className='create_button' onClick={(event) => handdleCreate()}>Create</button>
                 </CreateUserBox>
             </ContentBox>
         </Container>
