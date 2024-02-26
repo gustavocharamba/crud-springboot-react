@@ -52,38 +52,41 @@ const Users = () => {
                     <input placeholder='Search...'/>
                 </SearchBox>
                 <UsersBox>
-                    <div className='user'>
-                        <div className='user_div'>
-                            <div className='name_city_div'>
-                                <div className='teste'>
-                                    <h6>Name</h6>
-                                    <h5>Gustavo</h5>
+                    {users.map((user, i) => (
+                        <div className='user' key={i}>
+                            <div className='user_div'>
+                                <div className='name_city_div'>
+                                    <div className='teste'>
+                                        <h6>Name</h6>
+                                        <h5>{user.name}</h5>
+                                    </div>
+                                    <div className='teste'>
+                                        <h6>City</h6>
+                                        <h5>{user.city}</h5>
+                                    </div>
                                 </div>
-                                <div className='teste'>
-                                    <h6>City</h6>
-                                    <h5>Rio de Janeiro</h5>
+                                <div className='email_telephone_div'>
+                                    <div>
+                                        <h6>Email</h6>
+                                        <h5>{user.email}</h5>
+                                    </div>
+                                    <div>
+                                        <h6>Telefone</h6>
+                                        <h5>{user.phone}</h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='email_telephone_div'>
-                                <div>
-                                    <h6>Email</h6>
-                                    <h5>gustavocharamba@gmail.com</h5>
-                                </div>
-                                <div>
-                                    <h6>Telefone</h6>
-                                    <h5>99999999</h5>
-                                </div>
-                            </div>
-                            <div className='button_div'>
-                                <div>
-                                    <button><MdEdit style={icons}/></button>
-                                </div>
-                                <div>
-                                    <button onClick={handdleDelete(1)}><MdDelete style={icons}/></button>
+                                <div className='button_div'>
+                                    <div>
+                                        <button><MdEdit style={icons}/></button>
+                                    </div>
+                                    <div>
+                                        <button onClick={handdleDelete(1)}><MdDelete style={icons}/></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    ))}
+
                 </UsersBox>
                 <CreateUserBox>
                     <button className='create_button' onClick={handdleCreate}>Create</button>
