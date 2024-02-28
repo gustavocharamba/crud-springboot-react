@@ -13,13 +13,9 @@ const Users = () => {
 
     const [showModal, setShowModal] = useState(false)
 
-    const [users, setUsers] = useState([{
-        name: "",
-        email: "",
-        phone: "",
-        city: ""
+    const [users, setUsers] = useState([])
 
-    }]) 
+    const [user, setUser] = useState({})
 
     useEffect(() => {
         fetchData()
@@ -43,13 +39,14 @@ const Users = () => {
         await deleteUser(id)
     }
 
-    async function handdleEdit(obj){
-        await updateUser(obj)
+    function handdlEdit(obj){
+        setUser(obj)
+        setShowModal(true)
     }
 
     return(
         <Container>
-                {showModal ? <Modal onClose={() => setShowModal(false)}/> : null}
+                {showModal ? <Modal onClose={() => setShowModal(false)} onUser={user}/> : null}
             <ContentBox>
                 <SearchBox>
                     <input placeholder='Search...'/>
@@ -80,7 +77,7 @@ const Users = () => {
                                 </div>
                                 <div className='button_div'>
                                     <div>
-                                        <button onClick={() => setShowModal(true)}><MdEdit style={icons}/></button>
+                                        <button onClick={() => handdlEdit(user)}><MdEdit style={icons}/></button>
                                     </div>
                                     <div>
                                         <button onClick={(event) => handdleDelete(user.id)}><MdDelete style={icons}/></button>
@@ -92,7 +89,7 @@ const Users = () => {
 
                 </UsersBox>
                 <CreateUserBox>
-                    <button className='create_button' onClick={(event) => handdleCreate()}>Create</button>
+                    <button className='create_button'>Create</button>
                 </CreateUserBox>
             </ContentBox>
         </Container>

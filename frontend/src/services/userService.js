@@ -8,9 +8,19 @@ export const createUser = async (obj) => {
     }
 }
 
-export const getUsers = async (res) => {
+export const getUsers = async () => {
     try{
         const response = await api.get("http://localhost:8080/users")
+        
+        return response.data
+   } catch (error){
+        throw error
+   }
+}
+
+export const getOneUser = async (id) => {
+    try{
+        const response = await api.get(`http://localhost:8080/users/${id}`)
         
         return response.data
    } catch (error){

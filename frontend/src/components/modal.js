@@ -1,9 +1,14 @@
 import React, {useEffect, useState} from "react";
 
+import { getOneUser } from "../services/userService";
+
 import { Container, ContentBox, Form, icons } from "./styledModal"
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
-const Modal = ({onClose, children}) => {
+const Modal = ({onClose, onUser}) => {
+
+
+    console.log(onUser)
     return(
         <Container>
             <ContentBox>
@@ -14,21 +19,21 @@ const Modal = ({onClose, children}) => {
                 <Form>
                     <div>
                         <h5>Name</h5>
-                        <input type="name"></input>
+                        <input type="name" value={onUser.name}></input>
                     </div>
                     <div>
                         <h5>Email</h5>
-                        <input type="email"></input>
+                        <input type="email" value={onUser.email}></input>
                     </div>
                     <div>
                         <h5>Phone</h5>
-                        <input type="phone"></input>
+                        <input type="phone" value={onUser.phone}></input>
                     </div>
                     <div>
                         <h5>City</h5>
-                        <input type="city"></input>
+                        <input type="city" value={onUser.city}></input>
                     </div>
-                    <button>Create</button>
+                    <button >Create</button>
                 </Form>
             </ContentBox>
         </Container>
