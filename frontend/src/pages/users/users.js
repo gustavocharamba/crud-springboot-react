@@ -17,7 +17,6 @@ const Users = () => {
         name: "",
         email: "",
         phone: "",
-        password: "",
         city: ""
 
     }]) 
