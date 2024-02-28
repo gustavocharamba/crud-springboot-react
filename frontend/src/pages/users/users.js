@@ -5,11 +5,22 @@ import { getUsers, deleteUser, updateUser, createUser } from '../../services/use
 import { Container, ContentBox, SearchBox, UsersBox, icons, CreateUserBox } from './style'
 import { MdEdit, MdDelete   } from "react-icons/md";
 
+import Modal from '../../components/modal';
+
 const Users = () => {
 
     const navigate = useNavigate()
 
-    const [users, setUsers] = useState([]) 
+    const [showModal, setShowModal] = useState(false)
+
+    const [users, setUsers] = useState([{
+        name: "",
+        email: "",
+        phone: "",
+        password: "",
+        city: ""
+
+    }]) 
 
     useEffect(() => {
         fetchData()
@@ -39,6 +50,7 @@ const Users = () => {
 
     return(
         <Container>
+                {showModal ? <Modal onClose={() => setShowModal(false)}/> : null}
             <ContentBox>
                 <SearchBox>
                     <input placeholder='Search...'/>
@@ -69,7 +81,7 @@ const Users = () => {
                                 </div>
                                 <div className='button_div'>
                                     <div>
-                                        <button><MdEdit style={icons}/></button>
+                                        <button onClick={() => setShowModal(true)}><MdEdit style={icons}/></button>
                                     </div>
                                     <div>
                                         <button onClick={(event) => handdleDelete(user.id)}><MdDelete style={icons}/></button>
