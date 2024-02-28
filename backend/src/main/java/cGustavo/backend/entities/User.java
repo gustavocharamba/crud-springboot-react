@@ -14,7 +14,6 @@ public class User {
     private String name;
     private String email;
     private String phone;
-    private String password;
     private String city;
 
     public User(){}
@@ -23,7 +22,6 @@ public class User {
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.password = password;
         this.city = city;
     }
 
@@ -57,14 +55,6 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getCity() {
