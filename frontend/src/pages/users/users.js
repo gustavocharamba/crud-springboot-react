@@ -37,6 +37,9 @@ const Users = () => {
 
     async function handdleDelete(id) {
         await deleteUser(id)
+        
+        const response = await getUsers()
+        setUsers(response)
     }
 
     function handdlEdit(obj){
