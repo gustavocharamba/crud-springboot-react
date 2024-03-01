@@ -4,6 +4,7 @@ import { updateUser } from "../services/userService";
 
 import { Container, ContentBox, Form, icons } from "./styledModal"
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { type } from "@testing-library/user-event/dist/type";
 
 const Modal = ({onClose, onUser}) => {
 
@@ -14,8 +15,8 @@ const Modal = ({onClose, onUser}) => {
         city: onUser.city
     })
 
-    async function handdleSubmit(obj){
-        await updateUser(obj)
+    async function handdleSubmit(){
+        await updateUser(onUser.id, user)
     }
 
     const handleChange = (event) => {
@@ -24,10 +25,8 @@ const Modal = ({onClose, onUser}) => {
         setUser((prev) => {
             return {...prev, [name]: value}
         })
-
-        console.log({name, value})
     }
-
+    
     return(
         <Container>
             <ContentBox>
@@ -35,7 +34,7 @@ const Modal = ({onClose, onUser}) => {
                     <h2>Register</h2>
                     <button onClick={onClose}><IoIosCloseCircleOutline style={icons}/></button>
                 </div>
-                <Form>
+                <Form onSubmit={handdleSubmit}>
                     <div>
                         <h5>Name</h5>
                         <input type="text" value={user.name} onChange={handleChange} name="name" required></input>
@@ -52,7 +51,7 @@ const Modal = ({onClose, onUser}) => {
                         <h5>City</h5>
                         <input type="city" value={user.city} onChange={handleChange} name="city" required></input>
                     </div>
-                    <button >Create</button>
+                    <button type="submit">Edit</button>
                 </Form>
             </ContentBox>
         </Container>

@@ -36,9 +36,9 @@ export const deleteUser = async (id) => {
     }
 }
 
-export const updateUser = async (id) => {
+export const updateUser = async (id, obj) => {
     try{
-        await api.put(`http://localhost:8080/users/${id}`)
+        await api.put(`http://localhost:8080/users/${id}`, obj)
     } catch (error) {
         throw error
     }
