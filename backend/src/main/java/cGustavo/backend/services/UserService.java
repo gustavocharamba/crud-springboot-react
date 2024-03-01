@@ -60,7 +60,7 @@ public class UserService {
         entity.setName(obj.getName());
         entity.setEmail(obj.getEmail());
         entity.setPhone(obj.getPhone());
-        entity.setPhone(obj.getCity());
+        entity.setCity(obj.getCity());
     }
 
 
