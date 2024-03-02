@@ -2,7 +2,7 @@ import api from "./api"
 
 export const createUser = async (obj) => {
     try{
-        await api.post(`http://localhost:8080/users`, {obj})
+        await api.post(`http://localhost:8080/users`, obj)
     } catch (error) {
         throw error
     }

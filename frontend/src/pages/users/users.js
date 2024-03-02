@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate  } from "react-router-dom"
-import { getUsers, deleteUser, updateUser, createUser } from '../../services/userService';
+import { getUsers, deleteUser } from '../../services/userService';
 
 import { Container, ContentBox, SearchBox, UsersBox, icons, CreateUserBox } from './style'
 import { MdEdit, MdDelete   } from "react-icons/md";
@@ -31,7 +31,6 @@ const Users = () => {
     }
 
     function handdleCreate(){
-
         navigate("/create")
     }
 
@@ -92,7 +91,7 @@ const Users = () => {
 
                 </UsersBox>
                 <CreateUserBox>
-                    <button className='create_button'>Create</button>
+                    <button className='create_user_button' onClick={handdleCreate}>Create User</button>
                 </CreateUserBox>
             </ContentBox>
         </Container>

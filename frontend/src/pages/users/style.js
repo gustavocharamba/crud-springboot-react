@@ -125,7 +125,7 @@ export const CreateUserBox = styled.div`
     align-items: center;
     justify-content: center;
 
-    .create_button {
+    .create_user_button {
         width: 80px;
         height: 45px;
         font-size: 16px;

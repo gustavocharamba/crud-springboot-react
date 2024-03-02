@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 import { updateUser } from "../services/userService";
 
 import { Container, ContentBox, Form, icons } from "./styledModal"
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { type } from "@testing-library/user-event/dist/type";
 
 const Modal = ({onClose, onUser}) => {
 
@@ -31,7 +30,7 @@ const Modal = ({onClose, onUser}) => {
         <Container>
             <ContentBox>
                 <div className="close_box">
-                    <h2>Register</h2>
+                    <h2>Update</h2>
                     <button onClick={onClose}><IoIosCloseCircleOutline style={icons}/></button>
                 </div>
                 <Form onSubmit={handdleSubmit}>
@@ -49,7 +48,7 @@ const Modal = ({onClose, onUser}) => {
                     </div>
                     <div>
                         <h5>City</h5>
-                        <input type="city" value={user.city} onChange={handleChange} name="city" required></input>
+                        <input type="text" value={user.city} onChange={handleChange} name="city" required></input>
                     </div>
                     <button type="submit">Edit</button>
                 </Form>
