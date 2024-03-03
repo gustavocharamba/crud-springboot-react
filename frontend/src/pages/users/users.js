@@ -17,6 +17,8 @@ const Users = () => {
 
     const [user, setUser] = useState({})
 
+    const [search, setSearch] = useState("")
+
     useEffect(() => {
         fetchData()
     }, [])
@@ -46,12 +48,20 @@ const Users = () => {
         setShowModal(true)
     }
 
+    const searchItems = (searchValue) => {
+        setSearch(searchValue)
+    
+        users.filter((item) => {
+            return Object.values(item).join("").toLocaleLowerCase().includes(search.toLocaleLowerCase())
+        })
+    }
+
     return(
         <Container>
                 {showModal ? <Modal onClose={() => setShowModal(false)} onUser={user}/> : null}
             <ContentBox>
                 <SearchBox>
-                    <input placeholder='Search...'/>
+                    <input placeholder='Search...' onChange={(event) => searchItems(event.target.value)}/>
                 </SearchBox>
                 <UsersBox>
                     {users.map((user, i) => (
